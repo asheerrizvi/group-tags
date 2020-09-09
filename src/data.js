@@ -1,33 +1,33 @@
 const initialData = {
   tags: {
     'ryzen-5-3500X': {
-      id: 'processor-1',
+      id: 'ryzen-5-3500X',
       content: 'Ryzen 5 3950X',
       group: 'parts',
     },
     'ryzen-7-3700X': {
-      id: 'processor-2',
+      id: 'ryzen-7-3700X',
       content: 'Ryzen 7 3700X',
       group: 'parts',
     },
     'ryzen-9-3900X': {
-      id: 'processor-3',
+      id: 'ryzen-9-3900X',
       content: 'Ryzen 9 3900X',
       group: 'parts',
     },
     'trident-z-16GB': {
-      id: 'memory-1',
+      id: 'trident-z-16GB',
       content: 'Trident Z 16GB',
       group: 'parts',
     },
     'corsair-vengence-16GB': {
-      id: 'memory-2',
+      id: 'corsair-vengence-16GB',
       content: 'Corsair Vengence 16GB',
       group: 'parts',
     },
-    'RTX 3070': { id: 'gpu-1', content: 'Nvidia RTX 3070', group: 'parts' },
-    'RTX 3080': { id: 'gpu-2', content: 'Nvidia RTX 3080', group: 'parts' },
-    'RTX 3090': { id: 'gpu-3', content: 'Nvidia RTX 3090', group: 'parts' },
+    'rtx-3070': { id: 'rtx-3070', content: 'Nvidia RTX 3070', group: 'parts' },
+    'rtx-3080': { id: 'rtx-3080', content: 'Nvidia RTX 3080', group: 'parts' },
+    'rtx-3090': { id: 'rtx-3090', content: 'Nvidia RTX 3090', group: 'parts' },
   },
   groups: {
     cpu: {
@@ -49,18 +49,18 @@ const initialData = {
       id: 'parts',
       title: 'All Computer Parts',
       tagIds: [
-        'processor-1',
-        'processor-2',
-        'processor-3',
-        'memory-1',
-        'memory-2',
-        'gpu-1',
-        'gpu-2',
-        'gpu-3',
+        'ryzen-5-3500X',
+        'ryzen-7-3700X',
+        'ryzen-9-3900X',
+        'trident-z-16GB',
+        'corsair-vengence-16GB',
+        'rtx-3070',
+        'rtx-3080',
+        'rtx-3090',
       ],
     },
   },
-  groupOrder: ['cpu', 'memory', 'gpu'],
+  groupOrder: ['cpu', 'memory', 'gpu', 'parts'],
 };
 
 export default initialData;
