@@ -21,11 +21,13 @@ const TagList = styled.div`
   padding: 2rem;
   margin-top: 0.75rem;
   background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "white")};
+  color: ${(props) => (props.isDraggingOver ? "skyblue" : 'inherit')};
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 `;
 const Tip = styled.span`
   font-size: 1rem;
-  color: #68d391;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 `;
 
 class Group extends Component {
