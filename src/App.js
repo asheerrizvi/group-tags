@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import { DragDropContext } from 'react-beautiful-dnd';
+import React, { Component } from "react";
+import { DragDropContext } from "react-beautiful-dnd";
 
-import Group from './Group.js';
-import styled from 'styled-components';
+import Group from "./Group.js";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 1.5rem 0;
@@ -15,13 +16,16 @@ const Container = styled.div`
 class App extends Component {
   state = this.props.data;
 
+  // Check if there is data within localStorage,
+  // if yes, retrieve that data and store it in the app state.
   componentDidMount() {
-    const data = localStorage.getItem('data');
+    const data = localStorage.getItem("data");
     if (data) {
       this.setState(JSON.parse(data));
     }
   }
 
+  // This handler is fired when the dragging stops.
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
@@ -29,6 +33,7 @@ class App extends Component {
       return;
     }
 
+    // Check if there is a need to update the tag / group.
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -36,10 +41,12 @@ class App extends Component {
       return;
     }
 
+    // Get source, destination and the tag associated with the event.
     const start = this.state.groups[source.droppableId];
     const finish = this.state.groups[destination.droppableId];
     const tag = this.state.tags[draggableId];
 
+    // If the tag is moved within the same group, just change its index and update state.
     if (start === finish) {
       const newTagIds = [...start.tagIds];
       newTagIds.splice(source.index, 1);
@@ -59,10 +66,11 @@ class App extends Component {
       };
 
       this.setState(newState);
+      localStorage.setItem("data", JSON.stringify(newState));
       return;
     }
 
-    // Moving from one group to another.
+    // Perform additional actions if the tag is moved between two groups.
     const startTagIds = [...start.tagIds];
     startTagIds.splice(source.index, 1);
     const newStart = {
@@ -96,7 +104,7 @@ class App extends Component {
     };
 
     this.setState(newState);
-    localStorage.setItem('data', JSON.stringify(newState));
+    localStorage.setItem("data", JSON.stringify(newState));
   };
 
   render() {
