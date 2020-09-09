@@ -60,7 +60,7 @@ const initialData = {
       ],
     },
   },
-  groupOrder: ['cpu', 'memory', 'gpu', 'parts'],
+  groupOrder: ['parts', 'cpu', 'memory', 'gpu',],
 };
 
 export default initialData;

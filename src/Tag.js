@@ -6,17 +6,19 @@ const Container = styled.div`
   border: 1px solid lightgrey;
   border-radius: 2px;
   padding: 8px;
-  margin-bottom: 8px;
+  margin: 8px 4px 8px 4px;
+  background-color: ${(props) => (props.isDragging ? 'lightgreen' : 'white')};
 `;
 
 class Tag extends Component {
   render() {
     return (
       <Draggable draggableId={this.props.tag.id} index={this.props.index}>
-        {(provided) => (
+        {(provided, snapshot) => (
           <Container
             ref={provided.innerRef}
-            {...provided.draggableProps} 
+            isDragging={snapshot.isDragging}
+            {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
             {this.props.tag.content}
