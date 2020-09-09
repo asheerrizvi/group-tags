@@ -42,12 +42,12 @@ const initialData = {
     },
     gpu: {
       id: 'gpu',
-      title: 'All Gpus',
+      title: 'All GPUs',
       tagIds: [],
     },
     parts: {
       id: 'parts',
-      title: 'All Computer Parts',
+      title: 'All Parts',
       tagIds: [
         'ryzen-5-3500X',
         'ryzen-7-3700X',

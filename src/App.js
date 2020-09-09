@@ -7,10 +7,20 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+  padding: 0 6rem;
 `;
 
 class App extends Component {
   state = this.props.data;
+
+  componentDidMount() {
+    const data = localStorage.getItem('data');
+    if (data) {
+      this.setState(JSON.parse(data));
+    }
+  }
 
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -28,6 +38,7 @@ class App extends Component {
 
     const start = this.state.groups[source.droppableId];
     const finish = this.state.groups[destination.droppableId];
+    const tag = this.state.tags[draggableId];
 
     if (start === finish) {
       const newTagIds = [...start.tagIds];
@@ -66,8 +77,17 @@ class App extends Component {
       tagIds: finishTagIds,
     };
 
+    const newTag = {
+      ...tag,
+      group: finish.id,
+    };
+
     const newState = {
       ...this.state,
+      tags: {
+        ...this.state.tags,
+        [newTag.id]: newTag,
+      },
       groups: {
         ...this.state.groups,
         [newStart.id]: newStart,
@@ -76,6 +96,7 @@ class App extends Component {
     };
 
     this.setState(newState);
+    localStorage.setItem('data', JSON.stringify(newState));
   };
 
   render() {

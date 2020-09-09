@@ -4,9 +4,11 @@ import { Draggable } from 'react-beautiful-dnd';
 
 const Container = styled.div`
   border: 1px solid lightgrey;
-  border-radius: 2px;
-  padding: 8px;
-  margin: 8px 4px 8px 4px;
+  border-radius: 9999px;
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
   background-color: ${(props) => (props.isDragging ? 'lightgreen' : 'white')};
 `;
 
@@ -21,7 +23,7 @@ class Tag extends Component {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            {this.props.tag.content}
+            {this.props.tag.content}, Group: {this.props.tag.group.toUpperCase()}
           </Container>
         )}
       </Draggable>
