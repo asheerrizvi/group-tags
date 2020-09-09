@@ -6,19 +6,25 @@ import Tag from './Tag.js';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 220px;
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
+  &:first-child {
+    width: 100%;
+    min-height: 300px;
+  }
 `;
 const Title = styled.h3`
   padding: 8px;
 `;
 const TagList = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  align-items: start;
   padding: 8px;
+  min-height: 250px;
   background-color: ${(props) => (props.isDraggingOver ? 'skyblue' : 'white')};
-  flex-grow: 1;
-  min-height: 100px;
 `;
 
 class Group extends Component {
@@ -26,7 +32,7 @@ class Group extends Component {
     return (
       <Container>
         <Title>{this.props.group.title}</Title>
-        <Droppable droppableId={this.props.group.id} direction="horizontal">
+        <Droppable droppableId={this.props.group.id} direction={'horizontal'}>
           {(provided, snapshot) => (
             <TagList
               ref={provided.innerRef}
