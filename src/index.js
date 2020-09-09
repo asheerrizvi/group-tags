@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '@atlaskit/css-rest';
+import App from './App';
 
-const App = () => 'Hello World';
+import initialData from './data';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App data={initialData} />
   </React.StrictMode>,
   document.getElementById('root')
 );
